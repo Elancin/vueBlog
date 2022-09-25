@@ -2,15 +2,16 @@
     <div id="single-blog">
         <h1>{{blog.title}}</h1>
         <article>{{blog.content}}</article>
-        <p>分类：</p>
+        <!-- <p>分类：</p>
         <ul>
             <li v-for="category in blog.categories">
             {{category}}
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 <script>
+    import axios from 'axios'
 export default {
     name:'single-blog',
     data() {
@@ -20,16 +21,17 @@ export default {
         }
     },
     created() {
-        this.$http.get('https://myblog-f02b1-default-rtdb.asia-southeast1.firebasedatabase.app/posts/'+this.id+'.json')
+        axios.get('http://127.0.0.1:7001/singleBlog')
         .then(data=>{
-            // console.log(data);
-            // this.blog=data.body
-            return data.json()
-        })
-        .then(data=>{
-            this.blog=data
+            console.log(data.data);
+            this.blog=data.data
             // console.log(blog);
+            // return data.json()
         })
+        // .then(data=>{
+        //     this.blog=data
+        //     console.log(blog);
+        // })
     },
 }
 </script>

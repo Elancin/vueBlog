@@ -6,14 +6,14 @@
         <input type="text" v-model="blog.title" required>
         <label >博客内容</label>
         <textarea v-model="blog.content"></textarea>
-        <div id="checkboxes">
+        <!-- <div id="checkboxes">
             <label >Vue</label>
             <input type="checkbox" value="Vue" v-model="blog.categories">
             <label >Node</label>
             <input type="checkbox" value="Node" v-model="blog.categories">
             <label >Git</label>
             <input type="checkbox" value="Git" v-model="blog.categories">
-        </div>
+        </div> -->
         <button @click.prevent="post">添加博客</button>
     </form>
     <div v-if="submmited">
@@ -29,14 +29,14 @@ export default {
             blog: {
                 title: '',
                 content: '',
-                categories:[],
+                // categories:[],
             },
             submmited:false,
         }
     },
     methods: {
         post(){
-            this.$http.post('https://myblog-f02b1-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json',this.blog)
+            this.$http.post('http://127.0.0.1:7001/addblog',this.blog)
             .then((data)=>{
                 console.log(data);
                 this.submmited=true

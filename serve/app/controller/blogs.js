@@ -9,6 +9,15 @@ class HomeController extends Controller {
     // console.log(data);
     ctx.body = data;
   }
+  async addblog(){
+    const { ctx } = this;
+    const { title, content } = this.ctx.request.query;
+    const data = await this.app.mysql.query(
+      "SELECT title, content FROM blog WHERE (title = ? && content = ?);",
+      [title, content]
+    );
+    ctx.body = data;
+  }
 }
 
 module.exports = HomeController;

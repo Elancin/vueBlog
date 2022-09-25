@@ -3,15 +3,16 @@
         <h1>博客总览</h1>
         <input type="text" v-model="search" placeholder="搜索" >
         
-        <div  class="single-blog" v-for="blog in filteredBlogs">
+        <div  class="single-blog" v-for="(blog,id) in filteredBlogs" :key="id">
             <router-link :to="'/blog/'+blog.id">
-                <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
+                <h2 >{{blog.title | to-uppercase}}</h2>
             </router-link>
             <article>{{blog.content | snippet}}</article>
         </div> 
     </div>
 </template>
 <script>
+    import axios from 'axios'
 export default {
     name:'show-blogs',
     data() {
@@ -21,21 +22,10 @@ export default {
         }
     },
     created() {
-        this.$http.get('https://myblog-f02b1-default-rtdb.asia-southeast1.firebasedatabase.app/posts.json')
+        axios.get('http://127.0.0.1:7001/blogs')
         .then(data=>{
-            // console.log(data.json());
-            // this.blogs=data.body.slice(0,10);
-            return data.json();
-        })
-        .then(data=>{
-            let blogsArray=[];
-            for(let key in data){
-                // console.log(data[key]);
-                data[key].id=key
-                blogsArray.push(data[key])
-            }
-            // console.log(blogsArray);
-            this.blogs=blogsArray
+            // console.log(data);
+            this.blogs=data.data;
         })
     },
     computed:{
