@@ -17,21 +17,25 @@ export default {
     data() {
         return {
             id:this.$route.params.id,
-            blog:{}
+            blog:{
+                title:'',
+                content:''
+            },
         }
     },
     created() {
+        // axios.get('http://127.0.0.1:7001/singleBlog',this.id)
+        // .then(data=>{
+        //     data=this.id
+        //     console.log(data);
+        // })
         axios.get('http://127.0.0.1:7001/singleBlog')
         .then(data=>{
-            console.log(data.data);
-            this.blog=data.data
-            // console.log(blog);
-            // return data.json()
+             const a=JSON.parse(JSON.stringify(data.data))
+            this.blog.title=a[0].title
+            this.blog.content=a[0].content
+            console.log(this.blog);
         })
-        // .then(data=>{
-        //     this.blog=data
-        //     console.log(blog);
-        // })
     },
 }
 </script>

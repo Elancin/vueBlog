@@ -1,5 +1,5 @@
 <template lang="">
-    <div id="show-blogs" v-theme:column="'normal'">
+    <div id="show-blogs" v-theme:column="'wide'">
         <h1>博客总览</h1>
         <input type="text" v-model="search" placeholder="搜索" >
         
@@ -30,7 +30,7 @@ export default {
     },
     computed:{
         filteredBlogs:function(){
-            return this.blogs.filter((blog)=>{
+            return this.blogs.filter(blog=>{
                 return blog.title.match(this.search)
             })
         }
@@ -49,6 +49,7 @@ export default {
     #show-blogs{
         max-width: 800px;
         margin: 0 auto;
+        border-radius: 10px;
     }
     .single-blog{
         padding: 20px;
@@ -59,7 +60,7 @@ export default {
         border-radius: 10px;
     }
     #show-blogs a{
-        color: #444;
+        color: black;
         text-decoration: none;
     }
     input[type='text']{
