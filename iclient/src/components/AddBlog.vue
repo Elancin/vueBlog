@@ -6,14 +6,6 @@
         <input type="text" v-model="blog.title" required>
         <label >博客内容</label>
         <textarea v-model="blog.content"></textarea>
-        <!-- <div id="checkboxes">
-            <label >Vue</label>
-            <input type="checkbox" value="Vue" v-model="blog.categories">
-            <label >Node</label>
-            <input type="checkbox" value="Node" v-model="blog.categories">
-            <label >Git</label>
-            <input type="checkbox" value="Git" v-model="blog.categories">
-        </div> -->
         <button @click.prevent="post">添加博客</button>
     </form>
     <div v-if="submmited">
@@ -22,6 +14,8 @@
     </div>
 </template>
 <script>
+    import axios from "axios";
+    // import qs from "qs" ;
 export default {
     name: 'add-blog',
     data() {
@@ -29,14 +23,16 @@ export default {
             blog: {
                 title: '',
                 content: '',
-                // categories:[],
             },
             submmited:false,
         }
     },
     methods: {
         post(){
-            this.$http.post('http://127.0.0.1:7001/addblog',this.blog)
+           axios.post('http://127.0.0.1:7001/addblog',{
+            title:this.blog.title,
+            content:this.blog.content
+           })
             .then((data)=>{
                 console.log(data);
                 this.submmited=true

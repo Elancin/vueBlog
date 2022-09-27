@@ -24,11 +24,13 @@ class HomeController extends Controller {
     // 添加
     async addblog(){
       const { ctx } = this;
-      const { title, content } = this.ctx.request.query;
+      const { title, content } = this.ctx.request.body;
       const data = await this.app.mysql.query(
-        "SELECT title, content FROM blog WHERE (title = ? && content = ?);",
+        "insert into blog (title, content) values (?, ?)",
         [title, content]
       );
+      console.log(title,content);
+
       ctx.body = data;
     }
 }

@@ -24,7 +24,7 @@ export default {
         }
     },
     created() {
-        // axios.get('http://127.0.0.1:7001/singleBlog',this.id)
+        // axios.post('http://127.0.0.1:7001/singleBlog',this.id)
         // .then(data=>{
         //     data=this.id
         //     console.log(data);
