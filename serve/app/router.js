@@ -6,6 +6,7 @@
 module.exports = app => {
   const { router, controller } = app;
   router.get('/blogs', controller.blogs.bloglist);
-  router.get('/singleBlog', controller.blogs.singleBlog);
+  router.post('/singleBlog', controller.blogs.singleBlog);
   router.post('/addblog', controller.blogs.addblog);
+  router.get('/detailBlog', controller.blogs.detailBlog);
 };

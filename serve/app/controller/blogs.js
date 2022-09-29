@@ -7,18 +7,21 @@ class HomeController extends Controller {
   async bloglist() {
     const { ctx } = this;
     const data=await this.app.mysql.query('select * from blog')
-    // console.log(data);
     ctx.body = data;
   }
-  // detailsBlog
-  // 详情
-  async singleBlog() {
+
+    // 详情
+    async singleBlog() {
+      const { ctx } = this;
+      const { id } = this.ctx.request.body;
+      console.log('singleid',id);
+      ctx.body = id;
+      
+    }
+
+  async detailBlog() {
     const { ctx } = this;
-    const { id } = this.ctx.request.query;
-    const data= await this.app.mysql.query('select * from blog where id=1;',
-    )
-    console.log(id);
-    // console.log(data);
+    const data= await this.app.mysql.query('select * from blog where id=1')
     ctx.body = data;
   }
     // 添加

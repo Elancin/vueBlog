@@ -1,7 +1,7 @@
 <template lang="">
     <div id="show-blogs" v-theme:column="'wide'">
         <h1>博客总览</h1>
-        <input type="text" v-model="search" placeholder="搜索" >
+        <input type="text" v-model="search" placeholder="搜索标题" >
         
         <div  class="single-blog" v-for="(blog,id) in filteredBlogs" :key="id">
             <router-link :to="'/blog/'+blog.id">

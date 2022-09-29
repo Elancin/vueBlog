@@ -24,12 +24,11 @@ export default {
         }
     },
     created() {
-        // axios.post('http://127.0.0.1:7001/singleBlog',this.id)
-        // .then(data=>{
-        //     data=this.id
-        //     console.log(data);
-        // })
-        axios.get('http://127.0.0.1:7001/singleBlog')
+        axios.post('http://127.0.0.1:7001/singleBlog',{
+            id:this.id,
+        })
+ 
+        axios.get('http://127.0.0.1:7001/detailBlog')
         .then(data=>{
              const a=JSON.parse(JSON.stringify(data.data))
             this.blog.title=a[0].title
