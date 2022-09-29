@@ -1,5 +1,6 @@
 <template >
     <div id="single-blog">
+        <router-link to="/">cd..</router-link>
         <h1>{{blog.title}}</h1>
         <article>{{blog.content}}</article>
     </div>
@@ -24,18 +25,20 @@ export default {
             const a=JSON.parse(JSON.stringify(data.data))
             this.blog.title=a[0].title
             this.blog.content=a[0].content
-            console.log(this.blog);
-            console.log(data.data);
         })
     },
 }
 </script>
-<style>
+<style >
     #single-blog{
         max-width: 960px;
         margin: 0 auto;
         padding: 20px;
         background: #eee;
         border: 1px dotted #aaa;
+    }
+    .router-link-active {
+        color: black;
+        text-decoration: none
     }
 </style>
