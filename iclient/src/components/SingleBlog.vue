@@ -2,12 +2,6 @@
     <div id="single-blog">
         <h1>{{blog.title}}</h1>
         <article>{{blog.content}}</article>
-        <!-- <p>分类：</p>
-        <ul>
-            <li v-for="category in blog.categories">
-            {{category}}
-            </li>
-        </ul> -->
     </div>
 </template>
 <script>
@@ -24,16 +18,14 @@ export default {
         }
     },
     created() {
-        axios.post('http://127.0.0.1:7001/singleBlog',{
-            id:this.id,
-        })
- 
-        axios.get('http://127.0.0.1:7001/detailBlog')
+
+        axios.get('http://127.0.0.1:7001/detailBlog/',{params:{id:this.id}})
         .then(data=>{
-             const a=JSON.parse(JSON.stringify(data.data))
+            const a=JSON.parse(JSON.stringify(data.data))
             this.blog.title=a[0].title
             this.blog.content=a[0].content
             console.log(this.blog);
+            console.log(data.data);
         })
     },
 }

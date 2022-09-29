@@ -11,19 +11,17 @@ class HomeController extends Controller {
   }
 
     // 详情
-    async singleBlog() {
-      const { ctx } = this;
-      const { id } = this.ctx.request.body;
-      console.log('singleid',id);
-      ctx.body = id;
-      
-    }
-
   async detailBlog() {
     const { ctx } = this;
-    const data= await this.app.mysql.query('select * from blog where id=1')
+    const { id } = this.ctx.query;
+    console.log('id',id);
+    const data= await this.app.mysql.query('select * from blog where id=(?)',
+    [id]
+    )
+    console.log(data);
     ctx.body = data;
   }
+  
     // 添加
     async addblog(){
       const { ctx } = this;
