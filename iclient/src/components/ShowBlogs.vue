@@ -1,5 +1,5 @@
 <template lang="">
-    <div id="show-blogs" v-theme:column="'wide'">
+    <div id="show-blogs" >
         <h1>博客总览</h1>
         <input type="text" v-model="search" placeholder="搜索标题" >
         
@@ -36,6 +36,7 @@ export default {
         }
     },
     filters:{
+        // 全大写
         toUppercase(value){
             return value.toUpperCase()
         },
@@ -48,8 +49,10 @@ export default {
 <style scoped>
     #show-blogs{
         max-width: 800px;
+        padding: 20px;
         margin: 0 auto;
         border-radius: 10px;
+        border:1px solid #aaa;
     }
     .single-blog{
         padding: 20px;

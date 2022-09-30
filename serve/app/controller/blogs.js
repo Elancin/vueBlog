@@ -14,11 +14,11 @@ class HomeController extends Controller {
   async detailBlog() {
     const { ctx } = this;
     const { id } = this.ctx.query;
-    console.log('id',id);
+    // console.log('id',id);
     const data= await this.app.mysql.query('select * from blog where id=(?)',
     [id]
     )
-    console.log(data);
+    // console.log(data);
     ctx.body = data;
   }
   

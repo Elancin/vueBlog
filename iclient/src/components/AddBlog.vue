@@ -32,7 +32,7 @@ export default {
             title:this.blog.title,
             content:this.blog.content
            })
-            .then((data)=>{
+            .then(data=>{
                 console.log(data);
                 this.submmited=true
             });
